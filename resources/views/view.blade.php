@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/r-2.4.0/sl-1.5.0/datatables.min.css"/>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.13.1/b-2.3.3/r-2.4.0/sl-1.5.0/datatables.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <nav class="navbar bg-secondary">
@@ -18,14 +19,101 @@
                 Manage Employees
             </span>
             <div class="justify-content-end">
-                <button class="btn btn-danger me-2" type="button">Delete</button>
-                <button class="btn btn-success" type="button">Add New Employee</button>
+                <button class="btn btn-danger me-2" type="button" data-bs-toggle="modal" data-bs-target="#deleteEmployee">Delete</button>
+                <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#addEmployee">Add New Employee</button>
             </div>
         </div>
     </nav>
     <br>
     <div class="container">
-        <table id="example" class="display" width="100%"></table>
+        <table id="example" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th><input class="form-check-input" type="checkbox" value="" id=""></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php for ($i=0; $i < 100; $i++) { ?>
+                    <tr>
+                        <td>
+                            <input class="form-check-input" type="checkbox" value="" id="">
+                        </td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011-04-25</td>
+                        <td>
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#editEmployee">
+                                <i class="fa-sharp fa-solid fa-pen text-warning"></i>
+                            </button>
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteEmployee">
+                                <i class="fa-solid fa-trash text-danger"></i>
+                            </button>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+    {{-- MODAL --}}
+    <div class="modal fade" id="addEmployee" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="">Add Employee</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="editEmployee" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="">Edit Employee</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="deleteEmployee" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="">Delete Employee</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script>
@@ -70,16 +158,16 @@
 
 $(document).ready(function () {
     $('#example').DataTable({
-        data: dataSet,
+        //data: dataSet,
         select: true,
-        columns: [
+        /* columns: [
             { title: '*' },
             { title: 'Name' },
             { title: 'Email' },
             { title: 'Address' },
             { title: 'Phone.' },
             { title: 'Actions' },
-        ],
+        ], */
     });
 });
 </script>
