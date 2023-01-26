@@ -1,3 +1,4 @@
+@dd(auth()->member())
 @include('partials.__header', ['title' => 'Login'])
 <div class="container my-5">
     <div class="card text-center w-50 m-auto">

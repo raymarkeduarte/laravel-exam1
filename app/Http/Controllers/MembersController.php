@@ -11,15 +11,15 @@ class MembersController extends Controller
 {
     public function store(Request $request){
         $validated = $request->validate([
-            "firstName" => ['required', 'min:4'],
-            "lastName" => ['required', 'min:4'],
-            "userName" => ['required', 'min:4'],
+            "firstName" => ['required', 'min:3'],
+            "lastName" => ['required', 'min:3'],
+            "userName" => ['required', 'min:3'],
             "email" => ['required', 'email', Rule::unique('members', 'email')],
             "password" => 'required|confirmed|min:6',
         ]);
         $validated["password"] = bcrypt($validated["password"]);
         $member = Members::create($validated);
-        dd($member);
-        // auth()->login($member);
+        // dd($request);
+        auth()->login($member);
     }
 }
