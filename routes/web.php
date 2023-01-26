@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 });
-Route::get('/view', [App\Http\Controllers\MembersController::class, 'index']);
+Route::get('/view', [App\Http\Controllers\EmployeesController::class, 'index']);
 
 /* Route::get('/view', function () {
     return view('view');

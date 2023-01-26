@@ -30,7 +30,7 @@
     </nav>
     <br>
     <div class="container">
-        <table id="example" class="display table-striped" style="width:100%">
+        <table id="employees" class="display table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th><input class="form-check-input" type="checkbox" value="" id=""></th>
@@ -42,20 +42,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($members as $item)
-                    {{ $item->first_name }}
-                    <br>
-                    <br>
-                @endforeach
-                <?php for ($i=0; $i < 100; $i++) { ?>
+                @foreach ($employees as $item)
                     <tr>
                         <td>
                             <input class="form-check-input" type="checkbox" value="" id="">
                         </td>
-                        <td>Fname Lname</td>
-                        <td>test@email.com</td>
-                        <td>ph</td>
-                        <td>09123434353</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->address }}</td>
+                        <td>{{ $item->phone }}</td>
                         <td>
                             <button class="btn" data-bs-toggle="modal" data-bs-target="#editEmployee">
                                 <i class="fa-sharp fa-solid fa-pen text-warning"></i>
@@ -65,7 +60,7 @@
                             </button>
                         </td>
                     </tr>
-                <?php } ?>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -164,8 +159,12 @@
 </body>
 <script>
 $(document).ready(function () {
-    $('#example').DataTable({
+    $('#employees').DataTable({
         select: true,
+        "ordering": true,
+        "aoColumnDefs": [
+            { 'bSortable': false, 'aTargets': [ 0, 5 ] }
+        ]
     });
 });
 </script>
