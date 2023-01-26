@@ -16,4 +16,6 @@ class EmployeesController extends Controller
         $data = Employees::where('email', $email)->get();
         return view('view', ['employees' => $data]);
     }
+
+    
 }

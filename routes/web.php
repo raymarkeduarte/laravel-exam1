@@ -16,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
+Route::post('/store', [\App\Http\Controllers\MembersController::class, 'store']);
 
 Route::get('/register', function () {
     return view('register');
 });
-Route::get('/view', [App\Http\Controllers\EmployeesController::class, 'index']);
 
+Route::get('/view', [App\Http\Controllers\EmployeesController::class, 'index']);
 Route::get('/view/{email}', [App\Http\Controllers\EmployeesController::class, 'show']);

@@ -17,9 +17,9 @@ class MembersFactory extends Factory
     public function definition()
     {
         return [
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'user_name' => fake()->userName(),
+            'firstName' => fake()->firstName(),
+            'lastname' => fake()->lastName(),
+            'userName' => fake()->userName(),
             'email' => fake()->unique()->safeEmail(),
             'password' => fake()->password(),
         ];

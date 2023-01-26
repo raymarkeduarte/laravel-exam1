@@ -5,39 +5,39 @@
             <h1 class="card-title">Register</h1>
         </div>
         <div class="card-body">
-            <form action="" method="post">
-
+            <form action="store" method="post">
+                @csrf
                 <p>Create your account. It's free and only takes a minute.</p>
 
                 <div class="row g-2">
                     <div class="col-md mb-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="first_name" placeholder=" " value="" required>
-                            <label for="first_name">First Name</label>
+                            <input type="text" name="firstName" class="form-control" id="firstName" placeholder=" " value="" required>
+                            <label for="firstName">First Name</label>
                         </div>
                     </div>
                     <div class="col-md mb-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" id="first_name" placeholder=" " value="" required>
-                            <label for="last_name">Last Name</label>
+                            <input type="text" name="lastName" class="form-control" id="lastName" placeholder=" " value="" required>
+                            <label for="lastName">Last Name</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="username" placeholder=" " required>
-                    <label for="username">Username</label>
+                    <input type="text" name="userName" class="form-control" id="userName" placeholder=" " required>
+                    <label for="userName">Username</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="email" placeholder=" " required>
+                    <input type="text" name="email" class="form-control" id="email" placeholder=" " required>
                     <label for="email">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="cpassword" placeholder="Password" required>
-                    <label for="cpassword">Password</label>
+                    <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+                    <label for="password">Password</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="cpassword" placeholder="Password" required>
-                    <label for="cpassword">Confirm Password</label>
+                    <input name="password_confirmation" type="password" class="form-control" id="password_confirmation" placeholder="Password" required>
+                    <label for="password_confirmation">Confirm Password</label>
                 </div>
                 <div class="form-check text-start mb-3">
                     <input class="form-check-input" type="checkbox" value="" id="terms" required>
