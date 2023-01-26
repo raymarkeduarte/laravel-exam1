@@ -42,6 +42,11 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($members as $item)
+                    {{ $item->first_name }}
+                    <br>
+                    <br>
+                @endforeach
                 <?php for ($i=0; $i < 100; $i++) { ?>
                     <tr>
                         <td>
