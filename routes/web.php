@@ -25,4 +25,4 @@ Route::get('/view', function () {
     return view('view');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
