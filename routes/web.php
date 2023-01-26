@@ -22,8 +22,4 @@ Route::get('/register', function () {
 });
 Route::get('/view', [App\Http\Controllers\EmployeesController::class, 'index']);
 
-/* Route::get('/view', function () {
-    return view('view');
-}); */
-
-
+Route::get('/view/{email}', [App\Http\Controllers\EmployeesController::class, 'show']);
