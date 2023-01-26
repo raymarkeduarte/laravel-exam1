@@ -15,18 +15,22 @@
 <body>
     <nav class="navbar bg-secondary">
         <div class="container">
-            <span class="navbar-text text-light">
+            <h3 class="navbar-text text-light">
                 Manage Employees
-            </span>
+            </h3>
             <div class="justify-content-end">
-                <button class="btn btn-danger me-2" type="button" data-bs-toggle="modal" data-bs-target="#deleteEmployee">Delete</button>
-                <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#addEmployee">Add New Employee</button>
+                <button class="btn btn-danger me-2" type="button" data-bs-toggle="modal" data-bs-target="#deleteEmployee">
+                    <i class="fa-solid fa-circle-minus"></i> Delete
+                </button>
+                <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#addEmployee">
+                    <i class="fa-solid fa-circle-plus"></i> Add New Employee
+                </button>
             </div>
         </div>
     </nav>
     <br>
     <div class="container">
-        <table id="example" class="display" style="width:100%">
+        <table id="example" class="display table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th><input class="form-check-input" type="checkbox" value="" id=""></th>
@@ -81,7 +85,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="">
+                            <textarea class="form-control" id="address" placeholder=""></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone</label>
@@ -102,30 +106,30 @@
             <div class="modal-content">
                 <form action="" method="post">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="">Add Employee</h1>
+                        <h1 class="modal-title fs-5" id="">Edit Employee</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="">
+                            <input type="text" class="form-control" id="editName" placeholder="">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="">
+                            <input type="email" class="form-control" id="editEmail" placeholder="">
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" placeholder="">
+                            <textarea class="form-control" id="editAddress" placeholder=""></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="number" class="form-control" id="phone" placeholder="">
+                            <input type="number" class="form-control" id="editPhone" placeholder="">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-info">Add</button>
+                        <button type="button" class="btn btn-info">Save</button>
                     </div>
                 </form>
             </div>

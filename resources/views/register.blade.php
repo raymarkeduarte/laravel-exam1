@@ -59,7 +59,7 @@
                     <div class="form-check text-start mb-3">
                         <input class="form-check-input" type="checkbox" value="" id="terms" required>
                         <label class="form-check-label" for="terms">
-                            I accept the Terms of Use & Privacy Policy
+                            I accept the <a href="">Terms of Use</a> & <a href="">Privacy Policy</a>
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary w-100">Register Now</button>
