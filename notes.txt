@@ -4,6 +4,7 @@ php artisan make:controller *nameController
 php artisan make:migrations *name
 php artisan make:factory *name
 php artisan key:generate
+php artisan migrate
 
 git status
 git add -A
@@ -11,8 +12,26 @@ git commit -m "first commit"
 git pull
 git push origin main
 
-php artisan make:model *name
-php artisan make:controller *name
-php artisan make:migration *file_name--table=*tbl_name
-php artisan make:factory *name
-php artisan migrate
+CLIENT
+
+create account
+login
+post inspection
+quick booking - standard booking
+
+#quick booking
+step1:basic information
+enter inspection details
+enter product details (optional)
+step2: supplier details
+enter supplier details - select/add
+supplier contact person select/add
+factory details select/add
+factory contact person select/add
+review project
+submit
+
+home
+click title
+view post details
+view bids
