@@ -35,3 +35,22 @@ home
 click title
 view post details
 view bids
+
+bid entries
+click title
+hire me 
+hire
+
+my inspections
+posted inspection 
+update/delete
+
+picked inspection
+view report
+close project
+yes | nameController
+rate inspector works
+select inspector rate
+pay via paypal
+
+finished inspection
