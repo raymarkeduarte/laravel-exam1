@@ -4,3 +4,15 @@ php artisan make:controller *nameController
 php artisan make:migrations *name
 php artisan make:factory *name
 php artisan key:generate
+
+git status
+git add -A
+git commit -m "first commit"
+git pull
+git push origin main
+
+php artisan make:model *name
+php artisan make:controller *name
+php artisan make:migration *file_name--table=*tbl_name
+php artisan make:factory *name
+php artisan migrate
