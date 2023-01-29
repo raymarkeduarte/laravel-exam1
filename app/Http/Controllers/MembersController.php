@@ -6,20 +6,25 @@ use App\Models\Members;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class MembersController extends Controller
 {
     public function store(Request $request){
-        $validated = $request->validate([
-            "firstName" => ['required', 'min:3'],
-            "lastName" => ['required', 'min:3'],
-            "userName" => ['required', 'min:3'],
-            "email" => ['required', 'email', Rule::unique('members', 'email')],
-            "password" => 'required|confirmed|min:6',
-        ]);
-        $validated["password"] = bcrypt($validated["password"]);
-        $member = Members::create($validated);
-        // dd($request);
-        auth()->login($member);
+        $firstName = $request->firstName;
+        $lastName = $request->lastName;
+        $userName = $request->userName;
+        $email = $request->email;
+        $password = $request->password;
+        $insert = DB::insert(
+            'insert into members (firstName, lastName, userName, email, password) 
+            values(?, ?, ?, ?, ?)', 
+            [$firstName, $lastName, $userName, $email, bcrypt($password)]
+        );
+        
+        if($insert)
+            return view('login');
+        else
+            return response("error sa insert", 500);
     }
 }

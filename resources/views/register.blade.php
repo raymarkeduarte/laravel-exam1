@@ -5,7 +5,7 @@
             <h1 class="card-title">Register</h1>
         </div>
         <div class="card-body">
-            <form action="store" method="post">
+            <form action="register" method="post">
                 @csrf
                 <p>Create your account. It's free and only takes a minute.</p>
 

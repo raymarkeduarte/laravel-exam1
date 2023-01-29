@@ -1,4 +1,3 @@
-@dd(auth()->member())
 @include('partials.__header', ['title' => 'Login'])
 <div class="container my-5">
     <div class="card text-center w-50 m-auto">
@@ -7,6 +6,7 @@
         </div>
         <div class="card-body">
             <form action="" method="post">
+                @csrf
                 <h5 class="card-title">Member Login</h5>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="username" placeholder="username" required>
