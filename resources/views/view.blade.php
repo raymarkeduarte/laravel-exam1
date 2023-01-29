@@ -19,7 +19,7 @@
     <table id="employees" class="display table-striped" style="width:100%">
         <thead>
             <tr>
-                <th><input class="form-check-input" type="checkbox" value="" id=""></th>
+                <th><input class="form-check-input" type="checkbox" value="" id="selectAllEmployees"></th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Address</th>
@@ -30,9 +30,7 @@
         <tbody>
             @foreach ($employees as $item)
                 <tr>
-                    <td>
-                        <input class="form-check-input" type="checkbox" value="" id="">
-                    </td>
+                    <td></td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->address }}</td>
@@ -51,7 +49,7 @@
     </table>
 </div>
 
-{{-- MODAL --}}
+{{-- MODALS --}}
 <div class="modal fade" id="addEmployee" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

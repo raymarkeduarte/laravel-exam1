@@ -3,8 +3,9 @@ php artisan make:model *name
 php artisan make:controller *nameController
 php artisan make:migrations *name
 php artisan make:factory *name
-php artisan key:generate
 php artisan migrate
+
+php artisan key:generate
 
 git status
 git add -A
@@ -23,6 +24,7 @@ quick booking - standard booking
 step1:basic information
 enter inspection details
 enter product details (optional)
+
 step2: supplier details
 enter supplier details - select/add
 supplier contact person select/add
