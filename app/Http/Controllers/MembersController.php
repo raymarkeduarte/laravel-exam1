@@ -11,17 +11,21 @@ use Illuminate\Support\Facades\DB;
 class MembersController extends Controller
 {
     public function store(Request $request){
-        $firstName = $request->firstName;
-        $lastName = $request->lastName;
-        $userName = $request->userName;
-        $email = $request->email;
-        $password = $request->password;
+
+        // return 'shit';
+        $validated = $request->validate([
+            'firstName' => 'required|max:255',
+            'lastName' => 'required|max:255',
+            'userName' => 'required|max:15',
+            'email' => 'required|email',
+            'password' => 'required|confirmed'
+        ]);
+        $validated['password'] = bcrypt($validated['password']);
         $insert = DB::insert(
             'insert into members (firstName, lastName, userName, email, password) 
-            values(?, ?, ?, ?, ?)', 
-            [$firstName, $lastName, $userName, $email, bcrypt($password)]
+            values(?, ?, ?, ?, ?)', [ $validated['lastName'], $validated['lastName'], $validated['userName'], $validated['email'], $validated['password'] ]
         );
-        
+
         if($insert)
             return view('login');
         else

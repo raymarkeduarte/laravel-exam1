@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Members extends Model
 {
+    // protected $table = 'members';
+    // protected $primaryKey = 'id';
     protected $fillable = ['firstName','lastName','userName','email','password'];
     use HasFactory;
 }

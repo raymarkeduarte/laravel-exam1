@@ -5,6 +5,17 @@
             <h1 class="card-title">Register</h1>
         </div>
         <div class="card-body">
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="register" method="post">
                 @csrf
                 <p>Create your account. It's free and only takes a minute.</p>
@@ -12,7 +23,7 @@
                 <div class="row g-2">
                     <div class="col-md mb-3">
                         <div class="form-floating">
-                            <input type="text" name="firstName" class="form-control" id="firstName" placeholder=" " value="" required>
+                            <input type="text" name="firstName" class="form-control" id="firstName" placeholder=" " value="" required value="{{ old('firstName') }}">
                             <label for="firstName">First Name</label>
                         </div>
                     </div>

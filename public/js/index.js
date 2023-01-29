@@ -11,6 +11,7 @@ $(document).ready(function () {
                 targets:   5
             } 
         ],
+        // searching: false,
         select: {
             style:    'multi',
             selector: 'td:first-child'
