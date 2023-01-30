@@ -12,7 +12,6 @@ class MembersController extends Controller
 {
     public function store(Request $request){
 
-        // return 'shit';
         $validated = $request->validate([
             'firstName' => 'required|max:255',
             'lastName' => 'required|max:255',
@@ -23,7 +22,7 @@ class MembersController extends Controller
         $validated['password'] = bcrypt($validated['password']);
         $insert = DB::insert(
             'insert into members (firstName, lastName, userName, email, password) 
-            values(?, ?, ?, ?, ?)', [ $validated['lastName'], $validated['lastName'], $validated['userName'], $validated['email'], $validated['password'] ]
+            values(?, ?, ?, ?, ?)', [ $validated['firstName'], $validated['lastName'], $validated['userName'], $validated['email'], $validated['password'] ]
         );
 
         if($insert)
