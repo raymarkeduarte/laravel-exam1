@@ -20,19 +20,19 @@ class EmployeesController extends Controller
         return view('view', ['employees' => $data]);
     }
     
-    public function store(Request $request){
+    public function store(Request $request){/* 
         $validated = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email',
             'address' => 'required|max:255',
             'phone' => 'required|numeric|max:11',
         ]);
-        dd($validated['name']);
+        dd($validated['name']); */
+        
         $insert = DB::insert(
             'insert into employees (name, email, address, phone) 
-            values(?, ?, ?, ?)', [ $validated['name'], $validated['email'], $validated['address'], $validated['phone']]
+            values(?, ?, ?, ?)', [ $request['name'], $request['email'], $request['address'], $request['phone']]
         );
-        dd($insert);
         if($insert)
             return $insert;
         else
