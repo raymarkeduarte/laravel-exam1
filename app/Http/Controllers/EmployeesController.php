@@ -20,21 +20,21 @@ class EmployeesController extends Controller
         return view('view', ['employees' => $data]);
     }
     
-    public function store(Request $request){/* 
+    public function store(Request $request){
         $validated = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email',
-            'address' => 'required|max:255',
-            'phone' => 'required|numeric|max:11',
+            'address' => 'required|max:255'
         ]);
-        dd($validated['name']); */
-        
+
         $insert = DB::insert(
             'insert into employees (name, email, address, phone) 
-            values(?, ?, ?, ?)', [ $request['name'], $request['email'], $request['address'], $request['phone']]
+            values(?, ?, ?, ?)', [ $validated['name'], $validated['email'], $validated['address'], $request['phone']]
         );
-        if($insert)
-            return $insert;
+        if($insert){
+            $data = Employees::all();
+            return view('view', ['employees' => $data]);
+        }
         else
             return response("error sa insert ng employee", 500);
     }
