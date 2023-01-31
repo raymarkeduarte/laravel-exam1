@@ -31,13 +31,32 @@ class EmployeesController extends Controller
             'insert into employees (name, email, address, phone) 
             values(?, ?, ?, ?)', [ $validated['name'], $validated['email'], $validated['address'], $request['phone']]
         );
-        if($insert){
-            $data = Employees::all();
-            return view('dashboard', ['employees' => $data]);
-        }
+
+        if($insert)
+            return $this->index();
         else
             return response("error sa insert ng employee", 500);
     }
 
-    
+    public function update(Request $request){
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'address' => 'required|max:255'
+        ]);
+        $update = DB::table('employees')
+        ->where('id', $request->id)
+        ->update(
+            ['name' => $validated['name'],
+            'email' => $validated['email'],
+            'address' => $validated['address'],
+            'phone' => $request['phone']
+            ]
+        );
+
+        if($update)
+            return $this->index();
+        else
+            return response("error sa update ng employee", 500);
+    }    
 }

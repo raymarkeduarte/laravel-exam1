@@ -32,17 +32,19 @@
         </thead>
         <tbody>
             @foreach ($employees as $item)
-                <tr>
+                <tr id="employee{{ $item->id }}">
                     <td></td>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ $item->email }}</td>
-                    <td>{{ $item->address }}</td>
-                    <td>{{ $item->phone }}</td>
+                    <td class="employeeName">{{ $item->name }}</td>
+                    <td class="employeeEmail">{{ $item->email }}</td>
+                    <td class="employeeAddress">{{ $item->address }}</td>
+                    <td class="employeePhone">{{ $item->phone }}</td>
                     <td>
-                        <button class="btn" data-bs-toggle="modal" data-bs-target="#editEmployee">
+                        <button class="btn" data-bs-toggle="modal" data-bs-target="#editEmployee"
+                            onclick="editEmployee('employee{{ $item->id }}')">
                             <i class="fa-sharp fa-solid fa-pen text-warning"></i>
                         </button>
-                        <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteEmployee">
+                        <button class="btn" data-bs-toggle="modal" data-bs-target="#deleteEmployee"
+                            onclick="deleteEmployee('employee{{ $item->id }}')">
                             <i class="fa-solid fa-trash text-danger"></i>
                         </button>
                     </td>
@@ -56,7 +58,7 @@
 <div class="modal fade" id="addEmployee" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="store" method="post">
+            <form action="{{ route('store') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="">Add Employee</h1>
@@ -92,32 +94,34 @@
 <div class="modal fade" id="editEmployee" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="" method="post">
+            <form action="{{ route('update') }}" method="post">
+                @csrf
+                <input id="editID" type="hidden" name="id">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="">Edit Employee</h1>
+                    <h1 class="modal-title fs-5" id="">Edit Employee <span></span></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="editName" placeholder="">
+                        <input name="name" id="editName" type="text" class="form-control" id="editName" placeholder="">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="editEmail" placeholder="">
+                        <input name="email" id="editEmail" type="email" class="form-control" id="editEmail" placeholder="">
                     </div>
                     <div class="mb-3">
                         <label for="address" class="form-label">Address</label>
-                        <textarea class="form-control" id="editAddress" placeholder=""></textarea>
+                        <textarea name="address" id="editAddress" class="form-control" id="editAddress" placeholder=""></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone</label>
-                        <input type="number" class="form-control" id="editPhone" placeholder="">
+                        <input name="phone" id="editPhone" type="number" class="form-control" id="editPhone" placeholder="">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-info">Save</button>
+                    <button type="submit" class="btn btn-info">Save</button>
                 </div>
             </form>
         </div>
@@ -128,7 +132,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="">Delete Employee</h1>
+                <h1 class="modal-title fs-5" id="">Delete Employee <span></span></h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

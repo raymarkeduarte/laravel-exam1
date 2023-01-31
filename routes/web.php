@@ -38,7 +38,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard', [App\Http\Controllers\EmployeesController::class, 'index']);
 
     // new employee
-    Route::post('/store', [\App\Http\Controllers\EmployeesController::class, 'store']);
+    Route::post('/store', [\App\Http\Controllers\EmployeesController::class, 'store'])->name('store');
+
+    // edit employee
+    Route::post('/update', [\App\Http\Controllers\EmployeesController::class, 'update'])->name('update');
 
     // fetch 1 record using email
     Route::get('/dashboard/{email}', [App\Http\Controllers\EmployeesController::class, 'show']);
