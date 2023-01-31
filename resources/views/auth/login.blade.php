@@ -5,15 +5,15 @@
             <i class="fa-solid fa-circle-user fs-1"></i>
         </div>
         <div class="card-body">
-            <form action="" method="post">
+            <form action="{{ route('login.try') }}" method="post">
                 @csrf
                 <h5 class="card-title">Member Login</h5>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="username" placeholder="username" required>
+                    <input name="username" type="text" class="form-control" id="username" placeholder="username" required>
                     <label for="username">Username</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                    <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
                     <label for="password">Password</label>
                 </div>
                 <button type="submit" class="btn btn-primary w-100">Login</button>

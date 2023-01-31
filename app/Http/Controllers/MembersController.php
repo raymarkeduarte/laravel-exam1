@@ -26,7 +26,7 @@ class MembersController extends Controller
         );
 
         if($insert)
-            return view('login');
+            return view('auth.login');
         else
             return response("error sa insert", 500);
     }

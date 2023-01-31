@@ -5,54 +5,20 @@ php artisan make:migrations *name
 php artisan make:factory *name
 php artisan migrate
 
+php artisan cache:clear
+php artisan route:cache
+
 php artisan key:generate
+
+
+
+
+
+
+
 
 git status
 git add -A
 git commit -m "first commit"
 git pull
 git push origin main
-
-CLIENT
-
-create account
-login
-post inspection
-quick booking - standard booking
-
-#quick booking
-step1:basic information
-enter inspection details
-enter product details (optional)
-
-step2: supplier details
-enter supplier details - select/add
-supplier contact person select/add
-factory details select/add
-factory contact person select/add
-review project
-submit
-
-home
-click title
-view post details
-view bids
-
-bid entries
-click title
-hire me 
-hire
-
-my inspections
-posted inspection 
-update/delete
-
-picked inspection
-view report
-close project
-yes | nameController
-rate inspector works
-select inspector rate
-pay via paypal
-
-finished inspection

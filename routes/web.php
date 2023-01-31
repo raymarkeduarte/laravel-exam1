@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 //login form
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
 //login process/auth
-// Route::post('/', [\App\Http\Controllers\LoginController::class, 'authenticate']);
+Route::post('/', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('login.try');
 
 //register form
 Route::get('/register', function () {
-    return view('register');
+    return view('auth.register');
 });
 // register process/insert
 Route::post('/register', [\App\Http\Controllers\MembersController::class, 'store']);
