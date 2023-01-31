@@ -8,10 +8,17 @@
             <form action="{{ route('login') }}" method="post">
                 @csrf
                 <h5 class="card-title">Member Login</h5>
+
+                
+                @if ($errors->has('loginFail'))
+                    <span class="text-danger">{{ $errors->first('loginFail') }}</span>
+                @endif
+
                 <div class="form-floating mb-3">
-                    <input name="username" type="text" class="form-control" id="username" placeholder="username" required>
+                    <input name="username" type="text" class="form-control" id="username" placeholder="username" value="{{ old('username') }}" required>
                     <label for="username">Username</label>
                 </div>
+                
                 <div class="form-floating mb-3">
                     <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
                     <label for="password">Password</label>
