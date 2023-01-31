@@ -5,7 +5,7 @@
             <i class="fa-solid fa-circle-user fs-1"></i>
         </div>
         <div class="card-body">
-            <form action="{{ route('login.try') }}" method="post">
+            <form action="{{ route('login') }}" method="post">
                 @csrf
                 <h5 class="card-title">Member Login</h5>
                 <div class="form-floating mb-3">

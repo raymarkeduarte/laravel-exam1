@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Members;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;

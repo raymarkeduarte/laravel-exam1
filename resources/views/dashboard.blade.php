@@ -8,9 +8,12 @@
             <button class="btn btn-danger me-2" type="button" data-bs-toggle="modal" data-bs-target="#deleteEmployee">
                 <i class="fa-solid fa-circle-minus"></i> Delete
             </button>
-            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#addEmployee">
+            <button class="btn btn-success me-2" type="button" data-bs-toggle="modal" data-bs-target="#addEmployee">
                 <i class="fa-solid fa-circle-plus"></i> Add New Employee
             </button>
+            <form class="d-inline" action="{{ route('logout') }}" method="get">
+                <button class="btn btn-dark" type="submit"><i class="fa-solid fa-right-from-bracket"></i></button>
+            </form>
         </div>
     </div>
 </nav>
@@ -140,5 +143,4 @@
     </div>
 </div>
 
-<a href="../">Logout</a>
 @include('partials.__footer')

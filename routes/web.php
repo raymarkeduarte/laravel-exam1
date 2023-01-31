@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MembersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,21 +15,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//login form
+// login form
 Route::get('/', function () {
     return view('auth.login');
-});
-//login process/auth
-Route::post('/', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('login.try');
+})->middleware('guest');
 
-//register form
+// login process/auth
+Route::post('/', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('login');
+
+// register form
 Route::get('/register', function () {
     return view('auth.register');
-});
+})->middleware('guest');
+
 // register process/insert
 Route::post('/register', [\App\Http\Controllers\MembersController::class, 'store']);
 
-// new employee
-Route::post('/store', [\App\Http\Controllers\EmployeesController::class, 'store']);
-Route::get('/view', [App\Http\Controllers\EmployeesController::class, 'index']);
-Route::get('/view/{email}', [App\Http\Controllers\EmployeesController::class, 'show']);
+
+Route::group(['middleware' => ['auth']], function() {
+
+    // dashboard
+    Route::get('/dashboard', [App\Http\Controllers\EmployeesController::class, 'index']);
+
+    // new employee
+    Route::post('/store', [\App\Http\Controllers\EmployeesController::class, 'store']);
+
+    // fetch 1 record using email
+    Route::get('/dashboard/{email}', [App\Http\Controllers\EmployeesController::class, 'show']);
+
+});
+
+// logout
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout');

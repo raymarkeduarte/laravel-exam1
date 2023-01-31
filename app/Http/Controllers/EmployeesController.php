@@ -12,12 +12,12 @@ class EmployeesController extends Controller
 {
     public function index(){
         $data = Employees::all();
-        return view('view', ['employees' => $data]);
+        return view('dashboard', ['employees' => $data]);
     }
 
     public function show($email){
         $data = Employees::where('email', $email)->get();
-        return view('view', ['employees' => $data]);
+        return view('dashboard', ['employees' => $data]);
     }
     
     public function store(Request $request){
@@ -33,7 +33,7 @@ class EmployeesController extends Controller
         );
         if($insert){
             $data = Employees::all();
-            return view('view', ['employees' => $data]);
+            return view('dashboard', ['employees' => $data]);
         }
         else
             return response("error sa insert ng employee", 500);
