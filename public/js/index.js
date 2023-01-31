@@ -47,4 +47,5 @@ function deleteEmployee(id){
     let name = $('#'+id).find('.employeeName').text()
     id = id.replace('employee', '')
     $("#deleteEmployee .modal-title > span").html(': '+name)
+    $('#deleteID').val(id)
 }

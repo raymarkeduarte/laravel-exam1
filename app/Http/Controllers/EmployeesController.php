@@ -59,4 +59,13 @@ class EmployeesController extends Controller
         else
             return response("error sa update ng employee", 500);
     }    
+
+    public function delete(Request $request){
+        $deleted = DB::table('employees')->where('id', $request->id)->delete();
+
+        if($deleted)
+            return $this->index();
+        else
+            return response("error sa deletion ng employee", 500);
+    }    
 }
