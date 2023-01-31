@@ -25,6 +25,11 @@ $(document).ready(function () {
         else 
             employeesTable.rows().deselect()
     })
+
+    $('#employees tbody').on( 'click', 'tr', function () {
+        console.log( employeesTable.row( this ).data() );
+    } );
+
 });
 
 function editEmployee(id){
