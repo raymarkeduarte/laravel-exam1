@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('auth.login');
 })->middleware('guest');
 
-// login process/auth
+// login auth
 Route::post('/', [\App\Http\Controllers\LoginController::class, 'authenticate'])->name('login');
 
 // register form
@@ -51,6 +51,11 @@ Route::group(['middleware' => ['auth']], function() {
 
     // fetch 1 record using email
     Route::get('/dashboard/{email}', [App\Http\Controllers\EmployeesController::class, 'show']);
+
+    // email verify
+    Route::get('/email/verify', 'VerificatioController@show')->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify')->middleware(['signed']);
+    Route::post('/email/resend', 'VerificationController@resend')->name('verification.resend');
 
 });
 

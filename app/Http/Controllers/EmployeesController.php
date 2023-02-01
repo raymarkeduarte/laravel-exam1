@@ -52,7 +52,7 @@ class EmployeesController extends Controller
             ['name' => $validated['name'],
             'email' => $validated['email'],
             'address' => $validated['address'],
-            'phone' => $request['phone']
+            'phone' => $request->phone
             ]
         );
 

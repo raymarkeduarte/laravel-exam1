@@ -1,7 +1,7 @@
 $(document).ready(function () {
     let employeesTable = $('#employees').DataTable({
         dom: 'frtip',
-        pageLength: 5,
+        pageLength: 10,
         columnDefs: [ 
             {
                 orderable: false,
@@ -17,19 +17,20 @@ $(document).ready(function () {
             style:    'multi',
             selector: 'td'
         },
-        order: [ 2, 'asc' ],
+        order: [ 1, 'asc' ],
     });
 
     $('#selectAllEmployees').on('click', function(){
-        if($(this).prop('checked')){
-            $('#employees tbody tr').trigger('click')
+        if($(this).prop('checked'))
             employeesTable.rows().select()
-        }
         else 
             employeesTable.rows().deselect()
+        
+        $('#employees tbody tr').trigger('click')
     })
     
     $('#employees tbody tr').on( 'click', function(){
+        
         // get row ID
         let selectedRow = employeesTable.row(this, { select: true} ).id();
         selectedRow = selectedRow.replace('employee', '')
