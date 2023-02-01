@@ -1,5 +1,7 @@
 $(document).ready(function () {
     let employeesTable = $('#employees').DataTable({
+        dom: 'frtip',
+        pageLength: 5,
         columnDefs: [ 
             {
                 orderable: false,
@@ -8,29 +10,54 @@ $(document).ready(function () {
             },
             {
                 orderable: false,
-                targets:   5
+                targets:   6
             } 
         ],
-        // searching: false,
         select: {
             style:    'multi',
-            selector: 'td:first-child'
+            selector: 'td'
         },
-        order: [[ 1, 'asc' ]],
+        order: [ 2, 'asc' ],
     });
 
     $('#selectAllEmployees').on('click', function(){
-        if($(this).prop('checked'))
+        if($(this).prop('checked')){
+            $('#employees tbody tr').trigger('click')
             employeesTable.rows().select()
+        }
         else 
             employeesTable.rows().deselect()
     })
+    
+    $('#employees tbody tr').on( 'click', function(){
+        // get row ID
+        let selectedRow = employeesTable.row(this, { select: true} ).id();
+        selectedRow = selectedRow.replace('employee', '')
 
-    $('#employees tbody').on( 'click', 'tr', function () {
-        console.log( employeesTable.row( this ).data() );
-    } );
+        // add / remove data if exists
+        if(selectedRowData.includes(selectedRow))
+            selectedRowData = $.grep(selectedRowData, function(n) {
+                return n != selectedRow;
+            });
+        else
+            selectedRowData.push(selectedRow)
+
+        console.log(selectedRowData)
+    });
+
+    $('#multiDelete').click(function(){
+        if(selectedRowData.length === 0)
+            alert('Please select row(s) first.')
+        else{
+            $('#deleteEmployees').modal('show')
+            $('#deleteIDMultiple').val( JSON.stringify( selectedRowData ) )
+            $('#selectedRows').text('Employee ID(s): '+ selectedRowData)
+        }
+    })
 
 });
+
+let selectedRowData = [];
 
 function editEmployee(id){
     let name = $('#'+id).find('.employeeName').text()

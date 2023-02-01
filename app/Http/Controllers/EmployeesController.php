@@ -27,13 +27,15 @@ class EmployeesController extends Controller
             'address' => 'required|max:255'
         ]);
 
-        $insert = DB::insert(
-            'insert into employees (name, email, address, phone) 
-            values(?, ?, ?, ?)', [ $validated['name'], $validated['email'], $validated['address'], $request['phone']]
-        );
+        $insert = DB::table('employees')->insert([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'address' =>  $validated['address'],
+            'phone' => $request->phone
+        ]);
 
         if($insert)
-            return $this->index();
+            return redirect('dashboard');
         else
             return response("error sa insert ng employee", 500);
     }
@@ -55,7 +57,7 @@ class EmployeesController extends Controller
         );
 
         if($update)
-            return $this->index();
+            return redirect('dashboard');
         else
             return response("error sa update ng employee", 500);
     }    
@@ -64,7 +66,19 @@ class EmployeesController extends Controller
         $deleted = DB::table('employees')->where('id', $request->id)->delete();
 
         if($deleted)
-            return $this->index();
+            return redirect('dashboard');
+        else
+            return response("error sa deletion ng employee", 500);
+    }    
+
+    public function deleteMultiple(Request $request){
+        $ids = json_decode( $request->ids[0] );
+        foreach($ids as $employeeId){
+            $deleted = DB::table('employees')->where('id', $employeeId)->delete();
+        }
+
+        if($deleted)
+            return redirect('dashboard');
         else
             return response("error sa deletion ng employee", 500);
     }    

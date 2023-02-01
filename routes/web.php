@@ -46,6 +46,9 @@ Route::group(['middleware' => ['auth']], function() {
     // delete employee
     Route::post('/delete', [\App\Http\Controllers\EmployeesController::class, 'delete'])->name('delete');
 
+    // delete multiple employee
+    Route::post('/dashboard', [\App\Http\Controllers\EmployeesController::class, 'deleteMultiple'])->name('deleteMultiple');
+
     // fetch 1 record using email
     Route::get('/dashboard/{email}', [App\Http\Controllers\EmployeesController::class, 'show']);
 

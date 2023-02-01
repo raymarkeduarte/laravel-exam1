@@ -5,7 +5,7 @@
             Manage Employees
         </h3>
         <div class="justify-content-end">
-            <button class="btn btn-danger me-2" type="button" data-bs-toggle="modal" data-bs-target="#deleteEmployee">
+            <button id="multiDelete" class="btn btn-danger me-2" type="button">
                 <i class="fa-solid fa-circle-minus"></i> Delete
             </button>
             <button class="btn btn-success me-2" type="button" data-bs-toggle="modal" data-bs-target="#addEmployee">
@@ -23,6 +23,7 @@
         <thead>
             <tr>
                 <th><input class="form-check-input" type="checkbox" value="" id="selectAllEmployees"></th>
+                <th class="d-none">ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Address</th>
@@ -34,6 +35,7 @@
             @foreach ($employees as $item)
                 <tr id="employee{{ $item->id }}">
                     <td></td>
+                    <td class="d-none">{{ $item->id }}</td>
                     <td class="employeeName">{{ $item->name }}</td>
                     <td class="employeeEmail">{{ $item->email }}</td>
                     <td class="employeeAddress">{{ $item->address }}</td>
@@ -55,6 +57,8 @@
 </div>
 
 {{-- MODALS --}}
+
+{{-- Add employee --}}
 <div class="modal fade" id="addEmployee" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -91,6 +95,7 @@
     </div>
 </div>
 
+{{-- Edit employee --}}
 <div class="modal fade" id="editEmployee" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -128,6 +133,7 @@
     </div>
 </div>
 
+{{-- Delete an employee --}}
 <div class="modal fade" id="deleteEmployee" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -141,6 +147,31 @@
                     <input id="deleteID" type="hidden" name="id">
                     <p>Are you sure you want to delete these Records?</p>
                     <p>This action cannot be undone</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{-- Delete multiple employees --}}
+<div class="modal fade" id="deleteEmployees" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{ route('deleteMultiple') }}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="">Delete Employee <span></span></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input id="deleteIDMultiple" type="hidden" name="ids[]">
+                    <p>Are you sure you want to delete these Records?</p>
+                    <p>This action cannot be undone</p>
+                    <p id="selectedRows"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancel</button>
