@@ -26,7 +26,7 @@ class LoginController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return back()->withErrors([
+        return redirect('/')->withErrors([
             'loginFail' => 'Wrong username or password.',
         ])->onlyInput('username');
     }

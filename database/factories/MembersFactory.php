@@ -19,7 +19,7 @@ class MembersFactory extends Factory
         return [
             'firstName' => fake()->firstName(),
             'lastName' => fake()->lastName(),
-            'userName' => fake()->userName(),
+            'username' => fake()->username(),
             'email' => fake()->unique()->safeEmail(),
             'password' => fake()->password(),
         ];

@@ -11,6 +11,6 @@ class Members extends Model
     // protected $primaryKey = 'id';
     public $timestamps = false;
     
-    protected $fillable = ['firstName','lastName','userName','email','password'];
+    protected $fillable = ['firstName','lastName','username','email','password'];
     use HasFactory;
 }

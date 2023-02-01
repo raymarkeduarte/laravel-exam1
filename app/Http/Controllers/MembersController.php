@@ -16,15 +16,18 @@ class MembersController extends Controller
         $validated = $request->validate([
             'firstName' => 'required|max:255',
             'lastName' => 'required|max:255',
-            'userName' => 'required|max:15',
+            'username' => 'required|max:15',
             'email' => 'required|email',
             'password' => 'required|confirmed'
         ]);
         $validated['password'] = bcrypt($validated['password']);
-        $insert = DB::insert(
-            'insert into members (firstName, lastName, userName, email, password) 
-            values(?, ?, ?, ?, ?)', [ $validated['firstName'], $validated['lastName'], $validated['userName'], $validated['email'], $validated['password'] ]
-        );
+        $insert = DB::table('members')->insert([
+            'firstName' => $validated['firstName'],
+            'lastName' => $validated['lastName'],
+            'username' =>  $validated['username'],
+            'email' => $validated['email'],
+            'password' => $validated['password']
+        ]);
 
         if($insert)
             return view('auth.login');

@@ -35,8 +35,8 @@
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" name="userName" class="form-control" id="userName" placeholder=" " required>
-                    <label for="userName">Username</label>
+                    <input type="text" name="username" class="form-control" id="username" placeholder=" " required>
+                    <label for="username">Username</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" name="email" class="form-control" id="email" placeholder=" " required>
